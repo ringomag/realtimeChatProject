@@ -77,7 +77,7 @@ CHANNEL_LAYERS = {
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql_psycopg2',
-        'NAME': 'myproject',
+        'NAME': 'realtimechat',
         'USER': 'myprojectuser',
         'PASSWORD': 'root',
         'HOST': 'localhost',
