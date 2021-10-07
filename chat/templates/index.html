@@ -2,15 +2,16 @@
 {% load static %}
 
 {% block content %}
-<h3 class="heading">Enter chat room</h3>
-<div>
+<h3 class="heading"> welcome- {{user.username}}</h3>
+<div class="container">
+    <h3 class="heading">Enter chat room</h3>
     <input class="textInput" id="room-name" type="text">
-    <br>
+    <br> <br>
     <input class="button" id="room-name-submit" type="submit" value="Enter">
 </div>
 <br>
 <br>
-welcome {{user.username}}
+
 {% endblock %}
 
 {% block script %}  

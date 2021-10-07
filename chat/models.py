@@ -1,14 +1,20 @@
 from django.db import models
 from django.contrib.auth.models import User
-from django.db.models.deletion import CASCADE
 
-class Message(models.Model):
-    author = models.ForeignKey(User, related_name="author_messages", on_delete=CASCADE) 
-    content = models.TextField()
-    timestamp = models.DateTimeField(auto_now_add=True)
+
+class ChatRoom(models.Model):
+    name = models.CharField(max_length=255)
 
     def __str__(self):
-        return self.author.username
+        return self.name
+
+class Message(models.Model):
+    content = models.TextField()
+    created = models.DateTimeField(auto_now_add=True)
+    user = models.ForeignKey(User, on_delete=models.CASCADE)
+    room = models.ForeignKey(ChatRoom, on_delete=models.CASCADE)
+
+    def __str__(self):
+        return self.user.username
     
-    class Meta:
-        ordering =['-timestamp']
+    

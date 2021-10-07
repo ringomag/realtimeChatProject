@@ -1,9 +1,23 @@
 body{
     background-color: rgb(242, 245, 230);
+    margin: 0;
+    padding: 0;
+}
+nav{
+    background-color: teal;
+    padding: 10px;
+}
+nav>a{
+    text-decoration: none;
+    color: white;
+    padding: 10px;
+}
+.heading{
+    font-family: 'Work Sans', sans-serif;
 }
 .container{
     background-color: white;
-    width: 90%;
+    width: 80%;
     margin: 50px auto;
     padding: 20px 10px;
     text-align: center;
@@ -13,31 +27,55 @@ body{
 }
 #chat-log{
     text-align: center;
-    background-color: rgb(160, 197, 197);
+    
     width: 80%;
     margin: 50px auto;
+    transition: 0.3s;
 }
 .textInput{
     border:none;
-    border-bottom: 2px solid rgb(129, 168, 204);
+    border-bottom: 1px solid rgb(129, 168, 204);
     padding: 10px 15px;
+    display: inline-block;
+    width: 50%;
 }
 .textInput:focus{
     outline: none;
     border-bottom: 2px solid rgb(87, 127, 165);
 }
 .button{
-    background-color:none;
+    background-color:white;
     color: rgb(32, 36, 59);
     border: 0.12em solid rgb(92, 147, 199);
-    border-radius: 0.15em;
+    border-radius: 0.7em;
     padding: 10px 15px;
     display: inline-block;
     cursor: pointer;
+    width: 50%;
+    font-size: 1em;
 }
 
 .button:hover{
     background-color:rgb(92, 147, 199);
     transition: 0.3s;
     color: white;
+}
+.message{
+    background-color: thistle;
+    color: white;
+    padding: 8px;
+    border-radius: 2em;
+    margin-top: 5px;
+    width: 30%;
+    transition: 0.4s;
+   
+}
+.sender{
+    background-color: rgb(64, 122, 64);
+    margin-left: auto;
+}
+.receiver{
+    background-color: rgb(96, 64, 122);
+    margin-right:auto;
+
 }

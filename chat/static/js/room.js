@@ -1,13 +1,6 @@
 const chatLog = document.querySelector('#chat-log');
 const roomName = JSON.parse(document.getElementById('room-name').textContent);
 
-if (!chatLog.hasChildNodes()){
-    const emptyText = document.createElement('h4');
-    emptyText.id = 'emptyText'
-    emptyText.innerText = 'No messages'
-    emptyText.className = 'emptyText'
-    chatLog.appendChild(emptyText)
-}
 
 const chatSocket = new WebSocket(
     'ws://'
@@ -19,16 +12,23 @@ const chatSocket = new WebSocket(
 
 chatSocket.onmessage = function(e) {
     const data = JSON.parse(e.data);
-    // const userId = data['user_id'];
-    // const loggedInUserId = JSON.parse(document.getElementById('user_id').textContent)
+    const userId = data['user_id'];
+    const loggedInUserId = JSON.parse(document.getElementById('user_id').textContent)
     const messageElement = document.createElement('div')
+ 
+    console.log("user id,", userId);
+    console.log('loged in user id', loggedInUserId);
     messageElement.innerText = data.message
-    messageElement.className = 'message'
-    chatLog.appendChild(messageElement)
-
-    if (document.querySelector('#emptyText')){
-        document.querySelector('#emptyText').remove()
+    if (userId === loggedInUserId){
+        messageElement.classList.add('message', 'sender')
+    } else {
+        messageElement.classList.add('message', 'receiver')
     };
+    if (messageElement.textContent){
+        chatLog.appendChild(messageElement);
+    }
+    
+
 };
 
 chatSocket.onclose = function(e) {
