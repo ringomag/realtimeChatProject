@@ -1,0 +1,20 @@
+{% extends 'base.html' %}
+
+{% block content %}
+{% if messages %}
+<ul class="messages">
+    {% for message in messages %}
+    <div class="card-panel teal lighten-4">
+    <li> {{ message }}</li>
+    </div>
+    {% endfor %}
+</ul>
+{% endif %}
+
+<h4>Login</h4>
+<form method="POST">
+    {% csrf_token %}
+    {{form.as_p}}
+    <button type="submit" class="waves-effect waves-light btn white-text">Submit</button>
+</form>
+{% endblock %}

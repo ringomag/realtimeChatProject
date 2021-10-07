@@ -1,14 +1,19 @@
 {% extends 'base.html' %}
+{% load static %}
 
 {% block content %}
-<h1>Heading jedan</h1>
-
-<label for="room-name">Room Name</label>
-<input id="room-name" type="text">
+<h3 class="heading">Enter chat room</h3>
+<div>
+    <input class="textInput" id="room-name" type="text">
+    <br>
+    <input class="button" id="room-name-submit" type="submit" value="Enter">
+</div>
 <br>
-<input id="room-name-submit" type="submit">
+<br>
+welcome {{user.username}}
 {% endblock %}
 
 {% block script %}  
 {{ block.super }}
+<script src="{% static '/js/main.js' %}"></script>
 {% endblock %}
