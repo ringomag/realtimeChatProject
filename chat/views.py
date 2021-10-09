@@ -5,6 +5,7 @@ from .forms import *
 from django.contrib import messages
 from .models import Message
 
+
 def index(request):
     return render(request, 'index.html', {})
 

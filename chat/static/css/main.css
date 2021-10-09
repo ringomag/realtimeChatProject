@@ -27,10 +27,11 @@ nav>a{
 }
 #chat-log{
     text-align: center;
-    
+    max-height: 360px;
     width: 80%;
-    margin: 50px auto;
+    margin: 10px auto;
     transition: 0.3s;
+    overflow-y: scroll;
 }
 .textInput{
     border:none;

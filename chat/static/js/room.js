@@ -19,11 +19,13 @@ chatSocket.onmessage = function(e) {
     console.log("user id,", userId);
     console.log('loged in user id', loggedInUserId);
     messageElement.innerText = data.message
+
     if (userId === loggedInUserId){
         messageElement.classList.add('message', 'sender')
     } else {
         messageElement.classList.add('message', 'receiver')
     };
+    
     if (messageElement.textContent){
         chatLog.appendChild(messageElement);
     }
