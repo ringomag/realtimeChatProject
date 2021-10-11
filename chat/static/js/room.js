@@ -1,4 +1,5 @@
 const chatLog = document.querySelector('#chat-log');
+chatLog.scrollTop = chatLog.scrollHeight;
 const roomName = JSON.parse(document.getElementById('room-name').textContent);
 
 
@@ -28,6 +29,7 @@ chatSocket.onmessage = function(e) {
     
     if (messageElement.textContent){
         chatLog.appendChild(messageElement);
+        chatLog.scrollTop = chatLog.scrollHeight;
     }
     
 

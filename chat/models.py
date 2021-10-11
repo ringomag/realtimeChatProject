@@ -11,6 +11,7 @@ class ChatRoom(models.Model):
 class Message(models.Model):
     content = models.TextField()
     created = models.DateTimeField(auto_now_add=True)
+    seen = models.BooleanField(default=False)
     user = models.ForeignKey(User, on_delete=models.CASCADE)
     room = models.ForeignKey(ChatRoom, on_delete=models.CASCADE)
 
