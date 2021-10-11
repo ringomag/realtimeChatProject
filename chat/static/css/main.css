@@ -67,8 +67,10 @@ nav>a{
     padding: 8px;
     border-radius: 2em;
     margin-top: 5px;
-    width: 30%;
+    width: fit-content;
+    max-width: 35%;
     transition: 0.4s;
+    overflow-wrap: break-word;
    
 }
 .sender{

@@ -4,6 +4,8 @@ from chat.models import ChatRoom
 from .forms import *
 from django.contrib import messages
 from .models import Message
+from django.core.paginator import Paginator
+
 
 
 def index(request):
@@ -15,10 +17,13 @@ def room(request, room_name):
     chats = []
     if room:
         chats = Message.objects.filter(room=room)
+        paginator = Paginator(chats, 4) #4 komada po strani
+        page_number = request.GET.get('page')
+        page_obj = paginator.get_page(page_number)
     else:
         room = ChatRoom(name=room_name)
         room.save()
-    return render(request, 'room.html', {'room_name':room_name, 'chats':chats})
+    return render(request, 'room.html', {'room_name':room_name, 'page_obj':page_obj})
 
 def signup(request):
     if request.method == 'POST':
