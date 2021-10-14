@@ -23,6 +23,8 @@ def room(request, room_name):
     else:
         room = ChatRoom(name=room_name)
         room.save()
+        paginator = Paginator(chats, 4)
+        page_obj = paginator.get_page(1)
     return render(request, 'room.html', {'room_name':room_name, 'page_obj':page_obj})
 
 def signup(request):

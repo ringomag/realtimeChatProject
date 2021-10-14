@@ -24,7 +24,7 @@ class ChatConsumer(AsyncWebsocketConsumer):
         )
     #recive message form websocket
     async def receive(self, text_data):
-        text_data_json = json.loads(text_data)
+        text_data_json = json.loads(text_data)  
         message = text_data_json['message']
         #passin user iz self.scope
         self.user_id = self.scope['user'].id
@@ -42,16 +42,24 @@ class ChatConsumer(AsyncWebsocketConsumer):
             {
                 'type':'chat_message',
                 'message': message,
+                'message_id':chat.id, #ovo je izvuceni message id 
                 'user_id': self.user_id
             }
         )
     #receive message from room group
     async def chat_message(self, event):
+        print("ovo je event: ", event)
         message = event['message']
         user_id = event['user_id']
+        message_id = event['message_id']
+        
+        #ovako nesto bi trebalo da bude za promenu u bazi..ali ne valja
+        #await database_sync_to_async(Message.objects.get(id=message_id))(seen=True)
+        
 
         #send message to websocket
         await self.send(text_data=json.dumps({
             'message': message,
-            'user_id': user_id
+            'user_id': user_id,
+            'message_id': message_id
         }))

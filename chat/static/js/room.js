@@ -14,6 +14,7 @@ const chatSocket = new WebSocket(
 chatSocket.onmessage = function(e) {
     const data = JSON.parse(e.data);
     const userId = data['user_id'];
+    console.log("ovo je data: ", data); //ovde se vidi izvuceni message.id
     const loggedInUserId = JSON.parse(document.getElementById('user_id').textContent)
     const messageElement = document.createElement('div')
  
