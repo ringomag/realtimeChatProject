@@ -16,14 +16,14 @@ def room(request, room_name):
     room = ChatRoom.objects.filter(name=room_name).first()
     chats = []
     if room:
-        chats = Message.objects.filter(room=room, seen=False)
-        paginator = Paginator(chats, 4) #4 komada po strani
+        chats = Message.objects.filter(room=room)
+        paginator = Paginator(chats, 8) 
         page_number = request.GET.get('page')
         page_obj = paginator.get_page(page_number)
     else:
         room = ChatRoom(name=room_name)
         room.save()
-        paginator = Paginator(chats, 4)
+        paginator = Paginator(chats, 8)
         page_obj = paginator.get_page(1)
     return render(request, 'room.html', {'room_name':room_name, 'page_obj':page_obj})
 
